@@ -140,8 +140,8 @@ def true_color_img(chip_id, data_dir=TRAIN_FEATURES):
 
     return ms.true_color(r=red, g=green, b=blue)
 
-# Copied directly from benchmark_tutorial
 def display_random_chip(random_state):
+    """Shows randomly selected chip"""
     fig, ax = plt.subplots(1, 2, figsize=(8, 4))
     random_chip = train.sample(random_state=random_state).iloc[0]
 
@@ -155,7 +155,7 @@ def display_random_chip(random_state):
     plt.show()
     
 def display_true_color_and_label(chip_id, set_to_search, data_dir=TRAIN_FEATURES):
-    
+    """Show a specific chip and its associated label"""
     fig, ax = plt.subplots(1, 2, figsize=(8, 4))
     chip = set_to_search[set_to_search['chip_id'] == chip_id].iloc[0]
 
@@ -169,6 +169,7 @@ def display_true_color_and_label(chip_id, set_to_search, data_dir=TRAIN_FEATURES
     plt.show()
     
 def display_true_color_label_pixel_count(chip_id, set_to_search, data_dir=TRAIN_FEATURES):
+    """Show a specific chip and its associated label and number of cloud pixels"""
     display_true_color_and_label(chip_id, set_to_search)
     chip = set_to_search[set_to_search['chip_id'] == chip_id].iloc[0]
     label_im = Image.open(chip.label_path)
